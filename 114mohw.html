@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>114年度 PGY 培訓計畫分析儀表板 | 奇美醫院</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #003566; /* 亮藍色 */
+            --secondary: #fca311; /* 琥珀色 */
+            --highlight: #fef9c3; /* 淡黃色 */
+            --bg: #f8fafc; /* Slate-50 */
+            --text: #334155;
+            --white: #ffffff;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-top: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--secondary);
+        }
+
+        .card-full {
+            grid-column: 1 / -1;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-top: 0;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 350px;
+            width: 100%;
+        }
+
+        .insight-box {
+            background-color: var(--highlight);
+            border-left: 4px solid var(--secondary);
+            padding: 16px;
+            margin-top: 16px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        .insight-title {
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .tag-urgent { background-color: #fee2e2; color: #991b1b; }
+        .tag-medium { background-color: #ffedd5; color: #9a3412; }
+        .tag-good { background-color: #dcfce7; color: #166534; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>114學年 PGY 培訓計畫成效分析儀表板</h1>
+        <div class="subtitle">針對 112年度完訓學員 & 113年度 PGY1 學員回饋分析</div>
+    </header>
+
+    <div class="grid">
+        <!-- Chart 1: Resource Satisfaction -->
+        <div class="card card-full">
+            <h2>📊 教學資源與管理滿意度對比 (貴院 vs 全國)</h2>
+            <div class="chart-container">
+                <canvas id="satisfactionChart"></canvas>
+            </div>
+            <div class="insight-box">
+                <span class="insight-title">💡 關鍵洞察：</span>
+                112年度完訓學員在「權益反映管道」的滿意度 (58.3%) 顯著低於全國平均 (84.5%)，這是一個警訊。雖然 113年度新進學員對此滿意度較高 (96%)，但需注意這是否為「蜜月期」現象。此外，新進學員對「空間設備」滿意度 (80%) 略低於全國，呼應了質性回饋中對「值班室」的不滿。
+            </div>
+        </div>
+
+        <!-- Chart 2: Core Competencies -->
+        <div class="card">
+            <h2>🧠 112年度完訓學員核心能力自評</h2>
+            <div class="chart-container">
+                <canvas id="competencyChart"></canvas>
+            </div>
+            <div class="insight-box">
+                <span class="insight-title">✨ 成效亮點：</span>
+                完訓學員的自信心極高！六大核心能力自評皆具備極高信心 (93%~96%)，顯示培訓計畫在「專業能力養成」上非常成功，特別是在「制度下的臨床工作」與「人際溝通」方面。
+            </div>
+        </div>
+
+        <!-- Qualitative Analysis Table -->
+        <div class="card">
+            <h2>📝 質性回饋：關鍵痛點熱區</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>類別</th>
+                        <th>具體意見摘要</th>
+                        <th>影響群體</th>
+                        <th>急迫性</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>硬體設施</td>
+                        <td>值班室與 NP 共用，缺乏隱私與休息品質；希望能有專用值班室。</td>
+                        <td>PGY1</td>
+                        <td><span class="tag tag-urgent">高</span></td>
+                    </tr>
+                    <tr>
+                        <td>教學資源</td>
+                        <td>期刊權限不足，查文獻常受阻；希望增加資料庫資源。</td>
+                        <td>全體</td>
+                        <td><span class="tag tag-medium">中</span></td>
+                    </tr>
+                    <tr>
+                        <td>工作職責</td>
+                        <td>外科 Primary Care 多由 NP 完成，R 僅寫病歷，失去臨床實作意義。</td>
+                        <td>PGY1 外科組</td>
+                        <td><span class="tag tag-urgent">高</span></td>
+                    </tr>
+                    <tr>
+                        <td>人力配置</td>
+                        <td>內科假日值班床數過多，且缺乏接病人的支援人力。</td>
+                        <td>PGY1 內科組</td>
+                        <td><span class="tag tag-medium">中</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // Data Preparation
+    // Note: Data is extracted manually from the provided CSV snippets for accuracy.
+    
+    // Chart 1: Satisfaction Comparison
+    const ctxSat = document.getElementById('satisfactionChart').getContext('2d');
+    new Chart(ctxSat, {
+        type: 'bar',
+        data: {
+            labels: ['教學品質管理', '權益反映管道', '空間及設備'],
+            datasets: [
+                {
+                    label: '112年度完訓學員 (貴院)',
+                    data: [75.0, 58.3, 83.3], // Calculated from sum of Satisfied + Very Satisfied
+                    backgroundColor: '#003566',
+                    borderRadius: 4
+                },
+                {
+                    label: '113年度 PGY1 (貴院)',
+                    data: [92.0, 96.0, 80.0],
+                    backgroundColor: '#fca311',
+                    borderRadius: 4
+                },
+                {
+                    label: '全國平均 (參考)',
+                    data: [87.6, 84.5, 87.4], // Taken from CSV snippets
+                    type: 'line',
+                    borderColor: '#94a3b8',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#94a3b8',
+                    borderDash: [5, 5],
+                    fill: false,
+                    tension: 0.1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom' },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.dataset.label + ': ' + context.raw + '%';
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    title: { display: true, text: '滿意度 (%)' }
+                }
+            }
+        }
+    });
+
+    // Chart 2: Competency Radar
+    const ctxComp = document.getElementById('competencyChart').getContext('2d');
+    new Chart(ctxComp, {
+        type: 'radar',
+        data: {
+            labels: [
+                '病人照護',
+                '醫學知識',
+                '人際溝通',
+                '臨床學習改善',
+                '專業素養',
+                '制度下工作'
+            ],
+            datasets: [{
+                label: '112年度完訓學員具備信心度',
+                data: [93.9, 93.9, 96.1, 95.6, 95.8, 96.3], // Extracted from CSV
+                fill: true,
+                backgroundColor: 'rgba(252, 163, 17, 0.2)',
+                borderColor: '#fca311',
+                pointBackgroundColor: '#003566',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#003566'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            elements: {
+                line: { borderWidth: 3 }
+            },
+            scales: {
+                r: {
+                    angleLines: { display: true },
+                    suggestedMin: 80,
+                    suggestedMax: 100,
+                    ticks: { display: false } // Hide chart ticks for cleaner look
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
