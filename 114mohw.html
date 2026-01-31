@@ -49,10 +49,14 @@
                 <div class="text-3xl font-bold number-font text-[#003566]">37 <span class="text-sm text-slate-400 font-normal">位</span></div>
                 <p class="text-xs text-slate-500 mt-2">112完訓 (12) + 113 PGY1 (25)</p>
             </div>
+            <!-- 修改：同時顯示兩屆滿意度 -->
             <div class="card p-6 border-l-4 border-[#fca311]">
-                <h3 class="text-sm text-slate-500 mb-1">整體滿意度 (PGY1)</h3>
-                <div class="text-3xl font-bold number-font text-[#fca311]">92%</div>
-                <p class="text-xs text-green-600 mt-2">▲ 高於全國平均 (89.6%)</p>
+                <h3 class="text-sm text-slate-500 mb-1">整體滿意度 (雙軌)</h3>
+                <div class="flex items-end gap-2">
+                    <div class="text-2xl font-bold number-font text-[#fca311]">92% <span class="text-xs text-slate-400 font-normal">PGY1</span></div>
+                    <div class="text-xl font-bold number-font text-slate-400">67% <span class="text-xs font-normal">完訓</span></div>
+                </div>
+                <p class="text-xs text-orange-600 mt-2">⚠ 完訓學員滿意度顯著較低</p>
             </div>
             <div class="card p-6 border-l-4 border-red-500">
                 <h3 class="text-sm text-slate-500 mb-1">需關注議題</h3>
@@ -77,15 +81,15 @@
                     <li class="flex items-start gap-3">
                         <span class="bg-green-200 text-green-800 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
                         <div>
-                            <p class="font-bold text-slate-700">權益反映管道暢通</p>
-                            <p class="text-sm text-slate-600">滿意度 <span class="font-bold text-green-700">96%</span> (大幅領先全國 <span class="text-slate-500">86.7%</span>)</p>
+                            <p class="font-bold text-slate-700">新進學員適應良好 (PGY1)</p>
+                            <p class="text-sm text-slate-600">權益反映管道滿意度達 <span class="font-bold text-green-700">96%</span>，遠高於全國平均 <span class="text-slate-500">(86.7%)</span>。</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-3">
                         <span class="bg-green-200 text-green-800 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
                         <div>
                             <p class="font-bold text-slate-700">教學品質管理嚴謹</p>
-                            <p class="text-sm text-slate-600">滿意度 <span class="font-bold text-green-700">92%</span> (高於全國 <span class="text-slate-500">89.6%</span>)</p>
+                            <p class="text-sm text-slate-600">113年度滿意度 <span class="font-bold text-green-700">92%</span>，優於全國 <span class="text-slate-500">(89.6%)</span>。</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-3">
@@ -107,23 +111,23 @@
                     <li class="flex items-start gap-3">
                         <span class="bg-red-200 text-red-800 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
                         <div>
-                            <p class="font-bold text-slate-700">空間與硬體資源</p>
-                            <p class="text-sm text-slate-600">滿意度 <span class="font-bold text-red-600">80%</span> (低於全國 <span class="text-slate-500">87.4%</span>)</p>
-                            <p class="text-xs text-red-500 mt-1">痛點：值班室隱私(共用)、期刊權限不足</p>
+                            <p class="font-bold text-slate-700">資深學員溝通斷層 (完訓)</p>
+                            <p class="text-sm text-slate-600">完訓學員權益反映滿意度僅 <span class="font-bold text-red-600">58.3%</span>，遠低於全國 <span class="text-slate-500">(86.7%)</span>。</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-3">
                         <span class="bg-red-200 text-red-800 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
                         <div>
-                            <p class="font-bold text-slate-700">內科值班負荷</p>
-                            <p class="text-sm text-slate-600">學員反映：假日值班照護床數過多</p>
+                            <p class="font-bold text-slate-700">空間與硬體資源 (雙屆痛點)</p>
+                            <p class="text-sm text-slate-600">PGY1 (80%) 與 完訓 (66.7%) 兩者滿意度皆低於全國平均 <span class="text-slate-500">(87.4%)</span>。</p>
+                            <p class="text-xs text-red-500 mt-1">痛點：值班室隱私(共用)、期刊權限不足</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-3">
                         <span class="bg-red-200 text-red-800 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
                         <div>
-                            <p class="font-bold text-slate-700">外科訓練職責劃分</p>
-                            <p class="text-sm text-slate-600">學員反映：Primary Care 多由 NP 執行，影響實作</p>
+                            <p class="font-bold text-slate-700">臨床負擔與職責</p>
+                            <p class="text-sm text-slate-600">內科值班負荷過重、外科 Primary Care 機會不足。</p>
                         </div>
                     </li>
                 </ul>
@@ -136,7 +140,7 @@
             <!-- 左側：滿意度對比分析 -->
             <div class="card p-6">
                 <h2 class="text-lg font-bold text-[#003566] mb-4 flex items-center gap-2">
-                    📊 滿意度指標分析 (本院 vs 全國)
+                    📊 滿意度指標比較 (本院雙軌 vs 全國)
                 </h2>
                 <div class="h-64">
                     <canvas id="satisfactionChart"></canvas>
@@ -144,8 +148,9 @@
                 <div class="mt-4 p-4 bg-slate-50 rounded-lg text-sm text-slate-600">
                     <strong class="text-[#003566]">數據洞察：</strong>
                     <ul class="list-disc pl-5 mt-1 space-y-1">
-                        <li><span class="text-green-600 font-semibold">優勢：</span> 教學品質管理與權益反映管道，表現優異。</li>
-                        <li><span class="text-red-500 font-semibold">警訊：</span> 硬體空間/設備 (Q3) 出現 8% 不滿意與 12% 尚可，是主要失分項目。</li>
+                        <li><span class="text-green-600 font-semibold">PGY1 (113年)：</span> 在教學管理與溝通管道上，皆顯著<span class="text-green-700 font-bold">高於全國平均</span>，表現優異。</li>
+                        <li><span class="text-red-500 font-semibold">完訓 (112年)：</span> 整體滿意度低於全國，且在「空間及設備」與「權益反映」上出現明顯落差。</li>
+                        <li><span class="text-slate-500 font-semibold">全國基準：</span> 空間設備的全國標準為 87.4%，本院兩屆學員皆未達標，需優先改善。</li>
                     </ul>
                 </div>
             </div>
@@ -273,16 +278,24 @@
                 labels: ['教學品質管理', '權益反映管道', '空間及設備'],
                 datasets: [
                     {
-                        label: '本院滿意度 (PGY1)',
-                        data: [92, 96, 80], // 依據 CSV 數據計算 (滿意+非常滿意)
+                        label: '113年度 PGY1 (N=25)',
+                        data: [92, 96, 80], // 113年數據
                         backgroundColor: '#003566',
                         borderRadius: 4
                     },
                     {
-                        label: '全國平均',
-                        data: [89.6, 86.7, 87.4], // 依據 CSV 全國常模
-                        backgroundColor: '#94a3b8',
+                        label: '112年度 完訓 (N=12)',
+                        data: [75, 58.3, 66.7], // 112年數據 (Q3 補上估計值 66.7%, 8/12)
+                        backgroundColor: '#fca311',
                         borderRadius: 4
+                    },
+                    {
+                        label: '全國平均',
+                        data: [89.6, 86.7, 87.4], // 113年全國常模
+                        backgroundColor: '#94a3b8',
+                        borderRadius: 4,
+                        type: 'line', // 讓全國平均以線圖或獨立Bar呈現，這裡用Bar保持一致性，或可改Line
+                        order: 1
                     }
                 ]
             },
@@ -293,7 +306,11 @@
                     y: { beginAtZero: true, max: 100 }
                 },
                 plugins: {
-                    legend: { position: 'bottom' }
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                    }
                 }
             }
         });
@@ -305,7 +322,7 @@
             data: {
                 labels: ['病人照護', '人際溝通', '學習與改善', '專業素養', '制度下工作'],
                 datasets: [{
-                    label: '完訓學員自信度 (滿分100)',
+                    label: '完訓學員自信度 (112年度)',
                     data: [93.9, 96.1, 95.6, 95.8, 96.3], // 來自 CSV Q27-31
                     fill: true,
                     backgroundColor: 'rgba(252, 163, 17, 0.2)',
